@@ -12,6 +12,14 @@ plugins {
     alias(libs.plugins.kotlinCocoapods).apply(false)
     @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.jetbrainsCompose).apply(false)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.multiplatformResources)
+}
+
+buildscript {
+    dependencies {
+        classpath("dev.icerock.moko:resources-generator:0.23.0")
+    }
 }
 
 tasks.register("clean", Delete::class) {
