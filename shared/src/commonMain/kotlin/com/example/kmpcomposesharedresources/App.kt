@@ -14,10 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 internal fun App() {
@@ -30,9 +31,23 @@ internal fun App() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "First Text", color = Color.Blue, fontSize = 20.sp, textAlign = TextAlign.Center)
-            Text(text = "Second Text", color = Color.Red, fontSize = 20.sp, textAlign = TextAlign.Center)
-            Image(painter = ColorPainter(Color.Gray), contentDescription = null, modifier = Modifier.size(100.dp))
+            Text(
+                text = stringResource(SharedRes.strings.hello_world),
+                color = Color.Blue,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = stringResource(SharedRes.strings.hello_x, "Ly41k"),
+                color = Color.Red,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center
+            )
+            Image(
+                painter = painterResource(SharedRes.images.pic),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp)
+            )
         }
     }
 }

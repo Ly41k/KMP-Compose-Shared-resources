@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.jetbrainsCompose)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.multiplatformResources)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -32,6 +34,8 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            export(libs.moko.resources)
+            export(libs.moko.graphics)
         }
     }
 
@@ -43,12 +47,18 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.runtime)
                 implementation(compose.animation)
+
+                api(libs.moko.resources.compose)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
             }
+        }
+
+        val androidMain by getting {
+            dependsOn(commonMain)
         }
     }
 }
@@ -59,4 +69,9 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.example.kmpcomposesharedresources"
+    multiplatformResourcesClassName = "SharedRes"
 }
