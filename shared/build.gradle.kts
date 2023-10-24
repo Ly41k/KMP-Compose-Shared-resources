@@ -34,11 +34,15 @@ kotlin {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(compose.ui)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.runtime)
+                implementation(compose.animation)
             }
         }
         val commonTest by getting {
