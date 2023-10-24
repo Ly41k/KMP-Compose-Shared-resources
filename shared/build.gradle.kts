@@ -34,8 +34,8 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
-            export("dev.icerock.moko:resources:0.23.0")
-            export("dev.icerock.moko:graphics:0.9.0")
+            export(libs.moko.resources)
+            export(libs.moko.graphics)
         }
     }
 
@@ -48,7 +48,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.animation)
 
-                api(libs.multiplatform.resources.compose)
+                api(libs.moko.resources.compose)
             }
         }
         val commonTest by getting {
