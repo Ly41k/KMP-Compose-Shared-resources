@@ -1,7 +1,12 @@
 plugins {
+    @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.kotlinMultiplatform)
+    @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.kotlinCocoapods)
+    @Suppress("DSL_SCOPE_VIOLATION")
     alias(libs.plugins.androidLibrary)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.jetbrainsCompose)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
